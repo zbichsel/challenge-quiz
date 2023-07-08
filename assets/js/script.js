@@ -29,18 +29,18 @@ var quizContent = [
 // need to add something to keep quiz invisible before clicking start
 
 // starts the quiz upon clicking
-startButton.addEventListener('click', startButton);
+startButton.addEventListener('click', beginQuiz);
 
 function beginQuiz() {
-    startButton.style.display = "none";
-    intro.style.display = "none";
+    startButton.style.display = "visible";
+    intro.style.display = "visible";
     quiz.style.display = "visible";
     timerInterval = setInterval(updateTimer, 1000);
     showQuestion();
 }
 
 // test function
-beginQuiz();
+// beginQuiz();
 
 // function shows questions
 function beginQuestions() {
@@ -59,7 +59,7 @@ function beginQuestions() {
 }
 
 // test function
-beginQuestions();
+// beginQuestions();
 
 // function checks answer
 function checkAnswer(answerIndex) {
@@ -81,3 +81,48 @@ function checkAnswer(answerIndex) {
         endQuiz();
     }
 }
+
+// test function
+// checkAnswer();
+
+// create timer function
+function updateTimer() {
+    timeRemains --;
+    if (timeRemains <= 0) {
+        endQuiz();
+    }
+    timer.textContent = `Time: ${timeRemains} seconds`;
+}
+
+// test function
+// updateTimer();
+
+// create endQuiz function
+function endQuiz() {
+    clearInterval(timerInterval);
+    quiz.style.display = "none";
+
+    var message = document.createElement('h2');
+    var scoreNum = document.createElement('h4');
+    message.textContent = `You finished`;
+    scoreNum.textContent = `Your final score is ${score}0`;
+    containQ.appendChild(message);
+    containQ.appendChild(scoreNum);
+
+    var initials = document.createElement('input');
+    initials.placeholder = "Write your initials here";
+    containQ.appendChild(initials);
+
+    var submitBtn = document.createElement('button');
+    submitBtn.setAttribute("id", "submitBtn");
+    submitBtn.innerText = "Submit";
+    containQ.appendChild(submitBtn);
+
+    var resetBtn = document.createElement('button');
+    resetBtn.setAttribute("id", "resetBtn");
+    resetBtn.innerText = "Reset Game";
+    containQ.appendChild(resetBtn);
+}
+
+// test function
+// endQuiz();
