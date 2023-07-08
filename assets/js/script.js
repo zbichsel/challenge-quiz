@@ -4,14 +4,15 @@ var startButton = document.getElementById("start-btn");
 var quizQuestions = document.getElementById("quiz-questions");
 var quizAnswers = document.getElementById("quiz-answers");
 var currentQuestionIndex = 0;
-var timeRemains = 30;
+var timeRemains = 11;
+var score = 0;
 var timerInterval;
 
 var quizContent = [
     {
-    frage: "Wie heißt du?",
-    wahlen: ["zack", "seth", "mark", "brian"],
-    antwort: "zack"
+        frage: "Wie heißt du?",
+        wahlen: ["zack", "seth", "mark", "brian"],
+        antwort: "zack"
     },
 
     {
@@ -22,7 +23,8 @@ var quizContent = [
 
     {
         frage: "Was ist dein Beruf?",
-        wahlen: ["Chef", "Dev", "Taxifahrer", "Metzger"]
+        wahlen: ["Chef", "Dev", "Taxifahrer", "Metzger"],
+        antwort: "Dev"
     }
 ];
 
@@ -32,12 +34,12 @@ var quizContent = [
 startButton.addEventListener('click', beginQuiz);
 
 function beginQuiz() {
-    startButton.style.display = "visible";
-    intro.style.display = "visible";
+    startButton.style.display = "none";
+    intro.style.display = "none";
     quiz.style.display = "visible";
-    timerInterval = setInterval(updateTimer, 1000);
-    showQuestion();
-}
+    timerInterval = setInterval(updateTimer, 1500);
+    beginQuestions();
+};
 
 // test function
 // beginQuiz();
@@ -47,16 +49,16 @@ function beginQuestions() {
     var quizState = quizContent[currentQuestionIndex];
     quizQuestions.innerHTML = `${currentQuestionIndex + 1}. ${quizState.frage}`;
     quizAnswers.innerHTML = "";
-    for (var i = 0; i < quizState.wahlen.length; i++) {
+    for (let i = 0; i < quizState.wahlen.length; i++) {
         var createLi = document.createElement("li");
         var option = document.createElement("button");
         option.textContent = quizState.wahlen[i];
         // need to create checkAnswer function
-        option.addEventListener('click', () => checkAnswer(i));
+        option.addEventListener("click", () => checkAnswer(i));
         createLi.appendChild(option);
         quizAnswers.appendChild(option);
     }
-}
+};
 
 // test function
 // beginQuestions();
@@ -66,33 +68,39 @@ function checkAnswer(answerIndex) {
     var quizState = quizContent[currentQuestionIndex];
     if (quizState.wahlen[answerIndex] === quizState.antwort) {
         score++;
-        console.log("Score = " + score);
+        console.log(score);
         console.log("Selected choice: ", quizState.wahlen[answerIndex]);
         console.log("Correct Answer: ", quizState.antwort);
+        console.log("Correct!");
+        updateTimer();
     } else {
-        timeRemains -= 15;
+        console.log("Selected choice: ", quizState.wahlen[answerIndex]);
+        console.log("Correct Answer: ", quizState.antwort);
+        console.log("Wrong!");
+    //     timeRemains-= 0;
     }
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex < quizContent.length) {
-        showQuestion();
+        beginQuestions();
+        timeRemains = 11;
     } else {
         endQuiz();
     }
-}
+};
 
 // test function
 // checkAnswer();
 
 // create timer function
 function updateTimer() {
-    timeRemains --;
+    timeRemains--;
     if (timeRemains <= 0) {
         endQuiz();
     }
     timer.textContent = `Time: ${timeRemains} seconds`;
-}
+};
 
 // test function
 // updateTimer();
@@ -101,28 +109,31 @@ function updateTimer() {
 function endQuiz() {
     clearInterval(timerInterval);
     quiz.style.display = "none";
+    timer.style.display = "none";
 
     var message = document.createElement('h2');
     var scoreNum = document.createElement('h4');
     message.textContent = `You finished`;
-    scoreNum.textContent = `Your final score is ${score}0`;
-    containQ.appendChild(message);
-    containQ.appendChild(scoreNum);
+    scoreNum.textContent = `Your final score is ${score + 7}0`;
+    containQuiz.appendChild(message);
+    containQuiz.appendChild(scoreNum);
 
     var initials = document.createElement('input');
     initials.placeholder = "Write your initials here";
-    containQ.appendChild(initials);
+    containQuiz.appendChild(initials);
 
     var submitBtn = document.createElement('button');
     submitBtn.setAttribute("id", "submitBtn");
     submitBtn.innerText = "Submit";
-    containQ.appendChild(submitBtn);
+    containQuiz.appendChild(submitBtn);
 
-    var resetBtn = document.createElement('button');
+    resetBtn = document.createElement('button');
     resetBtn.setAttribute("id", "resetBtn");
     resetBtn.innerText = "Reset Game";
-    containQ.appendChild(resetBtn);
-}
+    containQuiz.appendChild(resetBtn);
+};
 
 // test function
 // endQuiz();
+
+// beginQuiz();
