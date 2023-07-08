@@ -24,4 +24,20 @@ var quizContent = [
         frage: "Was ist dein Beruf?",
         wahlen: ["Chef", "Dev", "Taxifahrer", "Metzger"]
     }
-]
+];
+
+// need to add something to keep quiz invisible before clicking start
+
+// starts the quiz upon clicking
+startButton.addEventListener('click', startButton);
+
+function beginQuiz() {
+    startButton.style.display = "none";
+    intro.style.display = "none";
+    quiz.style.display = "visible";
+    timerInterval = setInterval(updateTimer, 1000);
+    showQuestion();
+}
+
+// test function
+beginQuiz();
