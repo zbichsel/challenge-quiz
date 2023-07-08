@@ -41,3 +41,43 @@ function beginQuiz() {
 
 // test function
 beginQuiz();
+
+// function shows questions
+function beginQuestions() {
+    var quizState = quizContent[currentQuestionIndex];
+    quizQuestions.innerHTML = `${currentQuestionIndex + 1}. ${quizState.frage}`;
+    quizAnswers.innerHTML = "";
+    for (var i = 0; i < quizState.wahlen.length; i++) {
+        var createLi = document.createElement("li");
+        var option = document.createElement("button");
+        option.textContent = quizState.wahlen[i];
+        // need to create checkAnswer function
+        option.addEventListener('click', () => checkAnswer(i));
+        createLi.appendChild(option);
+        quizAnswers.appendChild(option);
+    }
+}
+
+// test function
+beginQuestions();
+
+// function checks answer
+function checkAnswer(answerIndex) {
+    var quizState = quizContent[currentQuestionIndex];
+    if (quizState.wahlen[answerIndex] === quizState.antwort) {
+        score++;
+        console.log("Score = " + score);
+        console.log("Selected choice: ", quizState.wahlen[answerIndex]);
+        console.log("Correct Answer: ", quizState.antwort);
+    } else {
+        timeRemains -= 15;
+    }
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < quizContent.length) {
+        showQuestion();
+    } else {
+        endQuiz();
+    }
+}
