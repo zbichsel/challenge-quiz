@@ -3,30 +3,76 @@ var quizRules = document.getElementById("guidelines");
 var startButton = document.getElementById("start-btn");
 var quizQuestions = document.getElementById("quiz-questions");
 var quizAnswers = document.getElementById("quiz-answers");
+var initialHere = document.getElementById("initials");
+var saveButton = document.getElementById("saveBtn");
+var resetButton = document.getElementById("resetBtn");
 var currentQuestionIndex = 0;
 var timeRemains = 11;
 var score = 0;
 var timerInterval;
 
 containQuiz.style.visibility = "hidden";
+quizResults.style.visibility = "hidden";
 
 var quizContent = [
     {
-        frage: "Wie heißt du?",
-        wahlen: ["zack", "seth", "mark", "brian"],
-        antwort: "zack"
+        frage: "Inside which HTML element do we put the JavaScript?",
+        wahlen: ["<scripting>", "<javascript>", "<js>", "<script>"],
+        antwort: "<script>"
     },
 
     {
-        frage: "Wie alt bist du?",
-        wahlen: ["sechszehn", "zwanzig", "zweiunddreißig", "fünfzig"],
-        antwort: "zweiunddreißig"
+        frage: "Where is the correct place to insert a JavaScript?",
+        wahlen: ["Both the <head> section and the <body> section are correct", "The <head> section", "The <body> section", "None of the above"],
+        antwort: "The <body> section"
     },
 
     {
-        frage: "Was ist dein Beruf?",
-        wahlen: ["Chef", "Dev", "Taxifahrer", "Metzger"],
-        antwort: "Dev"
+        frage: "How do you write Hello World in an alert box?",
+        wahlen: ["msgBox", "msg", "alertBox", "alert"],
+        antwort: "alert"
+    },
+
+    {
+        frage: "JavaScript is what kind of language?",
+        wahlen: ["Object-Oriented", "Object-Based", "Procedural", "None of the above"],
+        antwort: "Object-Oriented"
+    },
+
+    {
+        frage: "How do we declare a constant?",
+        wahlen: ["var", "let", "const", "null"],
+        antwort: "const"
+    },
+
+    {
+        frage: "What goes at the end when we declare variables?",
+        wahlen: ["period", "colon", "semi-colon", "comma"],
+        antwort: "semi-colon"
+    },
+
+    {
+        frage: "How do we add comments in JavaScript?",
+        wahlen: ["<!--This is a comment-->", "//This is a comment", "'This is a comment", "None of the above"],
+        antwort: "//This is a comment"
+    },
+
+    {
+        frage: "Which event occurs when the user clicks on an HTML element?",
+        wahlen: ["onclick", "onmouseclick", "onmouseover", "onchange"],
+        antwort: "onclick"
+    },
+
+    {
+        frage: "How do we declare a JavaScript variable?",
+        wahlen: ["v carName;", "var carName;", "variable carName;", "None of the above"],
+        antwort: "var carName;"
+    },
+
+    {
+        frage: "Which operator is used to assign a value to a variable?",
+        wahlen: ["=", "-", "*", "x"],
+        antwort: "="
     }
 ];
 
@@ -110,31 +156,32 @@ function updateTimer() {
 // create endQuiz function
 function endQuiz() {
     clearInterval(timerInterval);
-    quiz.style.display = "visible";
+    // change quiz display to "none" before submitting assignment
+    quiz.style.display = "none";
     timer.style.display = "visible";
 
-    var message = document.createElement('h2');
+    var message = document.createElement('h3');
     var scoreNum = document.createElement('h4');
-    message.textContent = `You finished`;
-    scoreNum.textContent = `Your final score is ${score + 7}0`;
+    message.textContent = `You finished!`;
+    scoreNum.textContent = `Your final score is ${score}0!`;
     containQuiz.appendChild(message);
     containQuiz.appendChild(scoreNum);
 
-    var initials = document.createElement('input');
-    initials.placeholder = "Write your initials here";
-    containQuiz.appendChild(initials);
-
-    var submitBtn = document.createElement('button');
-    submitBtn.setAttribute("id", "submitBtn");
-    submitBtn.innerText = "Submit";
-    containQuiz.appendChild(submitBtn);
-
-    resetBtn = document.createElement('button');
-    resetBtn.setAttribute("id", "resetBtn");
-    resetBtn.innerText = "Reset Game";
-    containQuiz.appendChild(resetBtn);
+    scoreSaver()
 };
 
+function scoreSaver() {
+    var initials = initialHere.value;
+    var highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+    var newScore = { score, initials };
+    highScores.push(newScore);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+
+}
+
+function showHighScores() {
+    statusContainerElement.style.display = "none";
+}
 // test function
 // endQuiz();
 

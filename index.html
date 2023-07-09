@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <title>Document</title>
 </head>
+
 <body>
     <header>
-        <h2 id="flex-left">High Scores!</h2>
+        <h2 id="flex-left"><a href="./highscores.html">High Scores!</a></h2>
         <h1>JavaScript Quiz</h1>
         <h2 id="timer">Time Remaining: <span id="countdown">0</span> Seconds</h2>
     </header>
@@ -17,11 +19,12 @@
         <section id="intro">
             <h3>JS Quiz</h3>
             <p id="guidelines">Train yourself to become an expert in JavaScript! <br>
-                You will have 30 seconds to answer each of the following multiple choice questions. <br>
-                By the end of the quiz you will receive your results, and you will be able to join the <strong>High Scores Leaderboard</strong><br>
-                Ich wünsche dir das Glück!
+                You will have 10 seconds to answer each of the following multiple choice questions. <br>
+                By the end of the quiz you will receive your results, and you will be able to join the <strong>High
+                    Scores Leaderboard</strong><br>
+                I wish you luck!
             </p>
-            <button id="start-btn">Hier Clicken, um die Quiz zu beginnen!</button>
+            <button id="start-btn">Click here to begin!</button>
         </section>
 
         <section id="containQuiz">
@@ -30,7 +33,15 @@
                 <div id="quiz-answers"></div>
             </div>
         </section>
+
+        <section id="quizResults">
+            <label for="initials">Initials: </label>
+            <input type="text" id="initials">
+            <button id="saveBtn" class="btn">Save Score</button>
+            <button id="resetBtn" class="btn">Reset Game</button>
+        </section>
     </main>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
