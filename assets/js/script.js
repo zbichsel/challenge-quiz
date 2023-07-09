@@ -7,7 +7,7 @@ var initialHere = document.getElementById("initials");
 var saveButton = document.getElementById("saveBtn");
 var resetButton = document.getElementById("resetBtn");
 var currentQuestionIndex = 0;
-var timeRemains = 11;
+var timeRemains = 61;
 var score = 0;
 var timerInterval;
 
@@ -125,14 +125,14 @@ function checkAnswer(answerIndex) {
         console.log("Selected choice: ", quizState.wahlen[answerIndex]);
         console.log("Correct Answer: ", quizState.antwort);
         console.log("Wrong!");
-    //     timeRemains-= 0;
+        // timeRemains-= 0;
     }
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex < quizContent.length) {
         beginQuestions();
-        timeRemains = 11;
+        timeRemains = 61;
     } else {
         endQuiz();
     }
