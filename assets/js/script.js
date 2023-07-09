@@ -109,7 +109,7 @@ function updateTimer() {
 function endQuiz() {
     clearInterval(timerInterval);
     quiz.style.display = "none";
-    timer.style.display = "none";
+    timer.style.display = "visible";
 
     var message = document.createElement('h2');
     var scoreNum = document.createElement('h4');
