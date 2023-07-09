@@ -8,6 +8,8 @@ var timeRemains = 11;
 var score = 0;
 var timerInterval;
 
+containQuiz.style.visibility = "hidden";
+
 var quizContent = [
     {
         frage: "Wie heißt du?",
@@ -36,8 +38,8 @@ startButton.addEventListener('click', beginQuiz);
 function beginQuiz() {
     startButton.style.display = "none";
     intro.style.display = "none";
-    quiz.style.display = "visible";
-    timerInterval = setInterval(updateTimer, 1500);
+    containQuiz.style.visibility = "visible";
+    timerInterval = setInterval(updateTimer, 900);
     beginQuestions();
 };
 
@@ -108,7 +110,7 @@ function updateTimer() {
 // create endQuiz function
 function endQuiz() {
     clearInterval(timerInterval);
-    quiz.style.display = "none";
+    quiz.style.display = "visible";
     timer.style.display = "visible";
 
     var message = document.createElement('h2');

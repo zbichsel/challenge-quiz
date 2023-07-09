@@ -9,7 +9,7 @@ header {
     border-radius: 10px;
 }
 
-#flex-left {
+#flex-left, #timer {
     background-color: rgb(124, 121, 120);
     border: 1px inset black;
     border-radius: 10px;
@@ -25,27 +25,17 @@ header {
     text-align: center;
 }
 
-#flex-left:hover {
+#flex-left:hover, #start-btn:hover {
     background-color: green;
     transition: 0.3s;
     cursor: pointer;
     text-decoration: underline;
 }
 
-#timer {
-    background-color: rgb(124, 121, 120);
-    border: 1px inset black;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 20px 5px #fff;
-    padding: 5px;
-    width: 200px;
-    height: 50px;
-    margin-top: 20px;
-    line-height: 50px;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    text-align: center;
+#timer:hover {
+    background-color: red;
+    transition: 0.3s;
+    box-shadow: inset 0px 0px 20px 5px black;
 }
 
 body {
@@ -63,11 +53,11 @@ body {
     width: 500px;
     margin: 20px auto;
     padding: 10px;
-    background-color: rgb(119, 178, 205);
+    background-color: rgb(222, 175, 131);
 }
 
-#intro h3 {
-    background-color: rgb(124, 121, 120);
+#intro h3, #guidelines, #start-btn, #quiz, #quiz-questions, #quiz-answers {
+    background-color: rgb(202, 211, 220);
     border: 1px inset black;
     border-radius: 10px;
     box-shadow: inset 0px 0px 20px 5px #fff;
@@ -76,47 +66,57 @@ body {
     height: 50px;
     margin: 10px auto;
     line-height: 50px;
-    color: white;
+    color: black;
     font-weight: bold;
     font-size: 16px;
     text-align: center;
 }
 
 #guidelines {
-    background-color: rgb(202, 211, 220);
-    border: 1px inset black;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 20px 5px #fff;
     padding: 25px;
-    width: 300px;
     height: 400px;
     margin: 20px auto;
-    line-height: 50px;
-    color: black;
-    font-weight: bold;
-    font-size: 16px;
-    text-align: center;
 }
 
 #start-btn {
-    background-color: rgb(202, 211, 220);
-    border: 1px inset black;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 20px 5px #fff;
     padding: 5px;
     width: 400px;
     height: 50px;
     margin: 0 auto;
     line-height: 25px;
-    color: black;
-    font-weight: bold;
-    font-size: 16px;
-    text-align: center;
 }
 
-#start-btn:hover {
-    transition: 0.3s;
-    background-color: green;
-    cursor: pointer;
-    text-decoration: underline;
+#quiz {
+    padding: 15px;
+    height: 370px;
+    margin: 20px auto;
+}
+
+#quiz-questions {
+    border-radius: 10px 10px 0 0;
+    padding: 10px 0;
+    margin: 0 auto;
+    height: 25px;
+    line-height: 28px;
+}
+
+#quiz-answers {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 0;
+    height: 300px;
+    margin: 0 auto;
+    line-height: 28px;
+}
+
+#quiz-answers button {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    width: 270px;
+    height: 55px;
+    align-items: center;
+    justify-content: space-evenly;
+
 }
