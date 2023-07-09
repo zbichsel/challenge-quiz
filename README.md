@@ -2,7 +2,7 @@
 
 ## Description
 
-I have created a JavaScript Quiz to test my abilities on the subject. It is a timed multiple choice quiz, wherein the user has 10 seconds to answer each question. Upon completing the quiz, the user will be given a score.
+I have created a JavaScript Quiz to test my abilities on the subject. It is a timed multiple choice quiz, wherein the user has 60 seconds to answer the questions. Upon completing the quiz, the user will be given a score.
 
 
 ## Installation
